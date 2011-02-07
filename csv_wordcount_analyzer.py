@@ -63,6 +63,6 @@ class Analyzer:
     return freq 
 
   def fields(self):
-    """Retrieves all of the fields in the ideation spreadsheet"""
+    """Retrieves all of the fields in the CSV"""
     return self.rows.next().keys()
 
