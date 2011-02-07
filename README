@@ -1,0 +1,29 @@
+CSV Wordcount Analyzer
+======================
+
+A simple tool for analyzing word counts across a given CSV file's columns. Based on
+Natural Language Toolkit (NLTK) frequency distribution libraries.
+
+Author
+======
+Yoni Ben-Meshulam
+
+Results
+=======
+A word will count only once per cell of a column. Counds reflect the prevalence
+of that word across all cells in that column.
+
+The results are NLTK's standard FreqDist object.
+
+
+Usage
+=====
+For example, to get the word frequencies for the "Innovation Ideas" column in the
+file data/ideas.csv:
+
+  import csv_wordcount_analyzer
+  from csv_wordcount_analyzer import Analyzer
+  a = Analyzer('data/ideas.csv')
+  freq = a.word_freq('Innovation Ideas')
+  freq.items()
+
