@@ -23,6 +23,8 @@ class Analyzer:
     freq = a.word_freq('Innovation Ideas')
     freq.items()
 
+  Known issues: Calling word_freq is somehow destructive, so it can only be called once.
+  The workaround is to create a new Analyzer each time you want to call word_freq or top_words
   """
   
   def __init__(self, csv_file_name):
@@ -61,6 +63,22 @@ class Analyzer:
 
     freq = FreqDist(word.lower() for word in words)
     return freq 
+
+  def top_words(self, column, n):
+    """
+    Retrieves the N top words from the given column, along with the count of
+    each word in CSV format.
+    """
+    freq = self.word_freq(column)
+    result = 'word,count\n'
+    words = freq.items()
+    for i in range(n):
+      if i >= len(words):
+        break
+      f = words[i]
+      result = result + f[0] + "," + str(f[1]) + '\n'
+
+    return result
 
   def fields(self):
     """Retrieves all of the fields in the CSV"""
