@@ -42,6 +42,12 @@ def test_top_words():
   top_words = a.top_words('title', 2)
   assert_equals('word,count\nday,3\nred,2', top_words)
 
-test_word_freq();
-test_top_words();
+def test_columns():
+  a = Analyzer('test/data/titles.csv')
+  assert_equals(['title'], a.columns())
+
+test_word_freq()
+test_top_words()
+test_columns()
+
 print "Finished running tests"

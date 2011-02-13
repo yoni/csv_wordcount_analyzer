@@ -80,10 +80,6 @@ class Analyzer:
 
     return result.strip()
 
-  def fields(self):
-    """Retrieves all of the fields in the CSV"""
-    return self.rows.next().keys()
-
   def columns(self):
     """Retrieves all of the fields in the CSV. Alias to 'fields'."""
-    return self.fields
+    return self.rows.next().keys()
