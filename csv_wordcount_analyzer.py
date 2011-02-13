@@ -26,7 +26,7 @@ class Analyzer:
   Known issues: Calling word_freq is somehow destructive, so it can only be called once.
   The workaround is to create a new Analyzer each time you want to call word_freq or top_words
   """
-  
+
   def __init__(self, csv_file_name):
     """Create a new analyzer with all of the rows in the CSV file"""
     if not csv_file_name:
@@ -38,7 +38,7 @@ class Analyzer:
     column_text = ''
     for row in self.rows:
       column_text = column_text + " " + row[column].lower()
-    return column_text 
+    return column_text
 
   def get_values(self, row, fields):
     """Gets an array of all of the values for the given fields from the given row"""
@@ -62,7 +62,7 @@ class Analyzer:
         words.append(word)
 
     freq = FreqDist(word.lower() for word in words)
-    return freq 
+    return freq
 
   def top_words(self, column, n):
     """
@@ -86,4 +86,4 @@ class Analyzer:
 
   def columns(self):
     """Retrieves all of the fields in the CSV. Alias to 'fields'."""
-    return self.fields 
+    return self.fields
