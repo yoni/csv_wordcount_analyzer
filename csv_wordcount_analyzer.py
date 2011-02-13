@@ -78,7 +78,7 @@ class Analyzer:
       f = words[i]
       result = result + f[0] + "," + str(f[1]) + '\n'
 
-    return result
+    return result.strip()
 
   def fields(self):
     """Retrieves all of the fields in the CSV"""

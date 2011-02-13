@@ -27,3 +27,7 @@ file data/ideas.csv:
   freq = a.word_freq('Innovation Ideas')
   freq.items()
 
+Tests
+=====
+To run tests from the project root:
+  bin/test
