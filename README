@@ -23,7 +23,7 @@ file data/ideas.csv:
 
   import csv_wordcount_analyzer
   from csv_wordcount_analyzer import Analyzer
-  a = Analyzer('data/ideas.csv')
+  a = CSVAnalyzer('data/ideas.csv')
   freq = a.word_freq('Innovation Ideas')
   freq.items()
 

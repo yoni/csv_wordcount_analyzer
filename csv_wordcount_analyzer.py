@@ -52,13 +52,14 @@ class Analyzer:
     words = []
 
     for row in self.rows:
-      pattern = r"\w+"
-      tokens = nltk.tokenize.regexp_tokenize(row[column], pattern)
-      stopwords = nltk.corpus.stopwords.words('english')
-      row_words = [w for w in tokens if w not in stopwords]
-      row_words = set(row_words) # Remove duplicates within a given row
-      for word in row_words:
-        words.append(word)
+      if(row[column]):
+        pattern = r"\w+"
+        tokens = nltk.tokenize.regexp_tokenize(row[column], pattern)
+        stopwords = nltk.corpus.stopwords.words('english')
+        row_words = [w for w in tokens if w not in stopwords]
+        row_words = set(row_words) # Remove duplicates within a given row
+        for word in row_words:
+          words.append(word)
 
     freq = FreqDist(word.lower() for word in words)
     return freq
