@@ -27,11 +27,10 @@ class Analyzer:
   The workaround is to create a new Analyzer each time you want to call word_freq or top_words
   """
 
-  def __init__(self, csv_file_name):
-    """Create a new analyzer with all of the rows in the CSV file"""
-    if not csv_file_name:
-      raise "Expected a file_name determining which CSV file to open."
-    self.rows = csv.DictReader(open(csv_file_name))
+  def __init__(self, rows):
+    """A wordcount analyzer that takes the set of rows directly. The developer
+    is assumed to have loaded the data themselves"""
+    self.rows = rows
 
   def full_text(self, column):
     """Retrieves the full text for the given column."""
@@ -83,3 +82,14 @@ class Analyzer:
   def columns(self):
     """Retrieves all of the fields in the CSV. Alias to 'fields'."""
     return self.rows.next().keys()
+
+
+class CSVAnalyzer(Analyzer):
+  """A wordcount analyzer that uses a flat CSV file for the data"""
+  def __init__(self, csv_file_name):
+    """Create a new analyzer with all of the rows in the CSV file"""
+    if not csv_file_name:
+      raise "Expected a file_name determining which CSV file to open."
+    rows = csv.DictReader(open(csv_file_name))
+    Analyzer.__init__(self, rows)
+
